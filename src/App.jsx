@@ -19,36 +19,34 @@ function App() {
   ];
 
   const [salesIconsArray, setSalesIconsArray] = useState([]);
-  const achievementsArray = [];
+  const [achievementsArray, setAchievementsArray] = useState([]);
   const sessionArray = [];
   const bell = "🔔";
   const bag = "💰";
   const trophy = "🏆";
   const eight = "🎖️";
   const [totalRevenue, setTotalRevenue] = useState(0);
-  let totalCom = 0;
-  let revenueMet = false;
+  const [totalCom, setTotalCom] = useState(0);
+  const [revenueMet, setRevenueMet]  = useState(false);
 
-  function calculateTotalRevenue() {
-    let total = 0;
-    salesIconsArray.forEach((icon) => {
-      const obj = salesObjArr.find((o) => o.emoji === icon);
-      if (obj) {
-        total += obj.revenue;
-      }
-    });
-    return total;
-  }
 
   function handleAddProduct(product) {
     const obj = salesObjArr.find((o) => o.emoji === product);
+    console.log(obj);
     if (obj) {
       // Calculate the new total revenue
       const newTotalRevenue = totalRevenue + obj.revenue;
+      const newTotalCom = totalCom + obj.commission;
       // Update the state variables with the new values
-      setSalesIconsArray([...salesIconsArray, product]);
+      setSalesIconsArray([product, ...salesIconsArray]);
       setTotalRevenue(newTotalRevenue);
+      setTotalCom(newTotalCom);
+      if (salesIconsArray.length === 0) {
+        setAchievementsArray(prev => [...prev, bell])
+      }
     }
+    
+    console.log(achievementsArray)
   }
 
   return (
@@ -56,14 +54,15 @@ function App() {
       <div className="salesboard">
         <Header />
         <SalesSelector
-          revenue={totalRevenue}
           salesObjects={salesObjArr}
           addProduct={handleAddProduct}
         />
         <SalesData
+          commission={totalCom}
           revenue={totalRevenue}
           salesObjects={salesObjArr}
           salesIcons={salesIconsArray}
+          achievements={achievementsArray}
         />
         <Buttons />
       </div>
