@@ -146,6 +146,11 @@ img {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   max-width: 210px;
+  cursor: pointer;
+}
+
+.save-data-btn:active, .reset-storage-btn:active, .reset-display-btn:active {
+  transform: translateY(2px);
 }
 
 button {

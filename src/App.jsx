@@ -44,6 +44,9 @@ function App() {
       if (salesIconsArray.length === 0) {
         setAchievementsArray(prev => [...prev, bell])
       }
+      if (salesIconsArray.length === 7) {
+        setAchievementsArray(prev => [...prev, eight])
+      }
     }
     
     console.log(achievementsArray)
