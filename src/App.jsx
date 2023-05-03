@@ -47,9 +47,18 @@ function App() {
       if (salesIconsArray.length === 7) {
         setAchievementsArray(prev => [...prev, eight])
       }
+      if (totalRevenue >= 2500 && !revenueMet) {
+        setAchievementsArray(prev => [...prev, bag])
+        setRevenueMet(true)
+      }
+      if (salesIconsArray.length === 14) {
+        setAchievementsArray(prev => [...prev, trophy])
+      }
     }
-    
-    console.log(achievementsArray)
+  }
+
+  function resetData() {
+
   }
 
   return (
