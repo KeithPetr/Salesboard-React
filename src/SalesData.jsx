@@ -19,11 +19,11 @@ export default function SalesData(props) {
       <div className="dollar-amounts">
         <div className="revenue">
           <h3 className="revenue-title">Total Revenue</h3>
-          <div className="revenue-amount">{revenue}</div>
+          <div className="revenue-amount">${revenue}</div>
         </div>
         <div className="commission">
           <h3 className="commission-title">Total Commission</h3>
-          <div className="commission-amount">{commission}</div>
+          <div className="commission-amount">${commission}</div>
         </div>
       </div>
     </>

@@ -1,15 +1,16 @@
 import React from "react";
 
-export default function Buttons() {
+export default function Buttons(props) {
+  const { resetData } = props
   return (
-    <div className="local-storage" id="local-storage">
-      <button className="save-data-btn" id="save-data-btn" type="button">
+    <div className="local-storage">
+      <button className="save-data-btn" type="button">
         Save Data
       </button>
-      <button className="reset-display-btn" id="reset-display-btn" type="button">
+      <button onClick={resetData} className="reset-display-btn" type="button">
         Reset Display
       </button>
-      <button className="reset-storage-btn" id="reset-storage-btn" type="button">
+      <button className="reset-storage-btn" type="button">
         Reset Storage
       </button>
     </div> 

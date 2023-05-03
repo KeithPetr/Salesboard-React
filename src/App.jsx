@@ -58,7 +58,11 @@ function App() {
   }
 
   function resetData() {
-
+    setSalesIconsArray([])
+    setAchievementsArray([])
+    setTotalCom(0)
+    setTotalRevenue(0)
+    setRevenueMet(false)
   }
 
   return (
@@ -76,7 +80,7 @@ function App() {
           salesIcons={salesIconsArray}
           achievements={achievementsArray}
         />
-        <Buttons />
+        <Buttons resetData={resetData}/>
       </div>
     </div>
   );
