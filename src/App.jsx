@@ -20,8 +20,8 @@ function App() {
 
   const [salesIconsArray, setSalesIconsArray] = useState([]);
   const [achievementsArray, setAchievementsArray] = useState([]);
-  const [sessionSalesIconsArray, setSessionSalesIconsArray] = useState([]);
-  const [sessionAchievementsArray, setSessionAchievementsArray] = useState([]);
+  const [salesSession, setSalesSession] = useState([]);
+  const [achievmentsSession, setAchievementsSession] = useState([]);
   const bell = "🔔";
   const bag = "💰";
   const trophy = "🏆";
@@ -33,7 +33,6 @@ function App() {
 
   function handleAddProduct(product) {
     const obj = salesObjArr.find((o) => o.emoji === product);
-    console.log(obj);
     if (obj) {
       // Calculate the new total revenue
       const newTotalRevenue = totalRevenue + obj.revenue;
@@ -66,9 +65,9 @@ function App() {
     setRevenueMet(false)
   }
 
-  function saveData() {
-    localStorage.setItem('Sales', JSON.stringify(salesIconsArray))
-    localStorage.setItem('Achievements', JSON.stringify(achievementsArray))
+
+  function clearStorage() {
+    localStorage.clear()
   }
 
   return (
@@ -88,7 +87,7 @@ function App() {
         />
         <Buttons 
           resetData={resetData}
-          saveData={saveData}
+          clearStorage={clearStorage}
           />
       </div>
     </div>
