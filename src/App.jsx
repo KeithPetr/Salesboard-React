@@ -20,7 +20,8 @@ function App() {
 
   const [salesIconsArray, setSalesIconsArray] = useState([]);
   const [achievementsArray, setAchievementsArray] = useState([]);
-  const sessionArray = [];
+  const [sessionSalesIconsArray, setSessionSalesIconsArray] = useState([]);
+  const [sessionAchievementsArray, setSessionAchievementsArray] = useState([]);
   const bell = "🔔";
   const bag = "💰";
   const trophy = "🏆";
@@ -65,6 +66,11 @@ function App() {
     setRevenueMet(false)
   }
 
+  function saveData() {
+    localStorage.setItem('Sales', JSON.stringify(salesIconsArray))
+    localStorage.setItem('Achievements', JSON.stringify(achievementsArray))
+  }
+
   return (
     <div className="container">
       <div className="salesboard">
@@ -80,7 +86,10 @@ function App() {
           salesIcons={salesIconsArray}
           achievements={achievementsArray}
         />
-        <Buttons resetData={resetData}/>
+        <Buttons 
+          resetData={resetData}
+          saveData={saveData}
+          />
       </div>
     </div>
   );
