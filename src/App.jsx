@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import SalesSelector from "./SalesSelector";
 import SalesData from "./SalesData";
@@ -20,8 +20,7 @@ function App() {
 
   const [salesIconsArray, setSalesIconsArray] = useState([]);
   const [achievementsArray, setAchievementsArray] = useState([]);
-  const [salesSession, setSalesSession] = useState([]);
-  const [achievmentsSession, setAchievementsSession] = useState([]);
+  const [theme, setTheme] = useState("light");
   const bell = "🔔";
   const bag = "💰";
   const trophy = "🏆";
@@ -70,13 +69,21 @@ function App() {
     localStorage.clear()
   }
 
+  function toggleMode() {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
   return (
     <div className="container">
-      <div className="salesboard">
-        <Header />
+      <div className={`salesboard $`}>
+        <Header 
+          toggle={toggleMode}
+          theme={theme}
+          />
         <SalesSelector
           salesObjects={salesObjArr}
           addProduct={handleAddProduct}
+          theme={theme}
         />
         <SalesData
           commission={totalCom}
@@ -84,10 +91,12 @@ function App() {
           salesObjects={salesObjArr}
           salesIcons={salesIconsArray}
           achievements={achievementsArray}
+          theme={theme}
         />
         <Buttons 
           resetData={resetData}
           clearStorage={clearStorage}
+          theme={theme}
           />
       </div>
     </div>
