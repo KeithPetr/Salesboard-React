@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="container">
-      <div className={`salesboard $`}>
+      <div className={`salesboard ${theme === 'light' ? 'light-mode' : ''}`}>
         <Header 
           toggle={toggleMode}
           theme={theme}
@@ -88,7 +88,6 @@ function App() {
         <SalesData
           commission={totalCom}
           revenue={totalRevenue}
-          salesObjects={salesObjArr}
           salesIcons={salesIconsArray}
           achievements={achievementsArray}
           theme={theme}

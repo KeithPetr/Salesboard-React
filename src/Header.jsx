@@ -5,8 +5,8 @@ export default function Header(props) {
     return (
         <div className="header">
           <h1 className="title">Salesboard 🔔</h1>
-          <button onClick={toggle} className="light-mode-btn" type="button">
-            Dark Mode
+          <button onClick={toggle} className={`light-mode-btn ${theme === 'light' ? 'light-purple' : ''}`} type="button">
+            {theme === 'light' ? 'Light' : 'Dark'} Mode
           </button>
         </div>
     )
